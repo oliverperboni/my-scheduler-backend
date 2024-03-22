@@ -11,4 +11,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
     
     // @Query("SELECT s FROM Employee WHERE s.name = ?1 ")
     Optional<Employee> findEmpleyeeByName(String name);
+
+
+    Employee findEmpleyeeById(int id);    
 }
