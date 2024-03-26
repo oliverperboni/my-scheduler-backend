@@ -18,7 +18,6 @@ public class UserConfig {
         return args -> { User alice = new User("Alice", "alice@gmail.com", "945852741");
                         User bob = new User("Bod", "bob@gmail.com", "951753258");
 
-
                         repository.saveAll(
                             List.of(alice, bob)
                         );

@@ -1,34 +1,35 @@
 package com.scheduler.myscheduler.employee;
 
 import java.util.Arrays;
+import java.util.List;
+
+import com.scheduler.myscheduler.appointment.Appointment;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 
 @Entity
-@Table
+@Table(name = "employee")
 public class Employee {
 
     @Id
-    @SequenceGenerator(
-            name = "employee_sequence",
-            sequenceName ="employee_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator =  "employee_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String phone;
     private int[] workDays;
+    @OneToMany(mappedBy = "employee")
+    private List<Appointment> appointments;
 
     public Employee() {
 
@@ -46,12 +47,12 @@ public class Employee {
         this.workDays = workDays;
     }
 
-    public Employee(int id, String name, String phone, int[] workDays) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.workDays = workDays;
-    }
+    // public Employee(int id, String name, String phone, int[] workDays) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.phone = phone;
+    //     this.workDays = workDays;
+    // }
 
     public int getId() {
         return id;

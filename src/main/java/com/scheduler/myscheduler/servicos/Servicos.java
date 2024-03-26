@@ -1,39 +1,38 @@
 package com.scheduler.myscheduler.servicos;
 
+import java.util.List;
+
+import com.scheduler.myscheduler.appointment.Appointment;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "services")
 public class Servicos {
 
-    
     @Id
-    @SequenceGenerator(
-            name = "service_sequence",
-            sequenceName ="service_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator =  "service_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     int duration;
     float price;
+    @OneToMany(mappedBy = "service")
+    private List<Appointment> appointments;
 
-    public Servicos(int id, String name, int duration, float price) {
-        this.id = id;
-        this.name = name;
-        this.duration = duration;
-        this.price = price;
-    }
+    // public Servicos(int id, String name, int duration, float price) {
+    // this.id = id;
+    // this.name = name;
+    // this.duration = duration;
+    // this.price = price;
+    // }
 
     public Servicos(String name, int duration, float price) {
         this.name = name;
@@ -80,5 +79,5 @@ public class Servicos {
     public void setPrice(float price) {
         this.price = price;
     }
-    
+
 }
