@@ -1,22 +1,19 @@
 package com.scheduler.myscheduler.appointment;
 
-import java.util.List;
 
 import com.scheduler.myscheduler.employee.Employee;
 import com.scheduler.myscheduler.servicos.Servicos;
 import com.scheduler.myscheduler.user.User;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -37,17 +34,6 @@ public class Appointment {
     )
     int id;
 
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "fk_service_id")
-    // Servicos servicos;
-
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "fk_employee_id")
-    // Employee employee;
-
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "fk_user_id")
-    // User user;
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -116,9 +102,6 @@ public class Appointment {
         this.dayWork = dayWork;
     }
  
-    
-
-
-
+  
     
 }

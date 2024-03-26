@@ -3,6 +3,7 @@ package com.scheduler.myscheduler.servicos;
 import java.util.List;
 
 import com.scheduler.myscheduler.appointment.Appointment;
+import com.scheduler.myscheduler.user.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,19 +27,27 @@ public class Servicos {
     @OneToMany(mappedBy = "service")
     private List<Appointment> appointments;
 
-    // public Servicos(int id, String name, int duration, float price) {
-    // this.id = id;
-    // this.name = name;
-    // this.duration = duration;
-    // this.price = price;
-    // }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Servicos(String name, int duration, float price) {
+   
+
+    
+    public Servicos(String name, int duration, float price, User user) {
         this.name = name;
         this.duration = duration;
         this.price = price;
+        this.user = user;
+    }
+    
+    public User getUser() {
+        return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
     public Servicos() {
     }
 

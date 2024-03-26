@@ -1,0 +1,16 @@
+
+exemplo de Post Appointment
+{
+    "employee": {
+       "id":2
+    },
+    "service" : {
+       "id":2
+    },
+    "user":{
+       "id":2
+    },
+    "dayWork" : 1
+
+
+}

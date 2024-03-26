@@ -3,15 +3,13 @@ package com.scheduler.myscheduler.user;
 import java.util.List;
 
 import com.scheduler.myscheduler.appointment.Appointment;
+import com.scheduler.myscheduler.servicos.Servicos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,18 +25,15 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Appointment> appointments;
 
+    @OneToMany(mappedBy = "user")
+    private List<Servicos> servicos;
+
     public User(String name, String email, String phone) {
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
-    // public User(int id, String name, String email, String phone) {
-    // this.id = id;
-    // this.name = name;
-    // this.email = email;
-    // this.phone = phone;
-    // }
 
     public User() {
 

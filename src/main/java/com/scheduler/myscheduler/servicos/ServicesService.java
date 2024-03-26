@@ -22,19 +22,30 @@ public class ServicesService {
     }
 
     public void addNewService(Servicos service) {
-        serviceRepository.save(service);
-        
+
+        Servicos servicos = serviceRepository.findByName(service.getName());
+        if (servicos == null) {
+            serviceRepository.save(service);
+        }
+
     }
 
     public void deleteService(int id) {
-       serviceRepository.deleteById(id);
+        serviceRepository.deleteById(id);
     }
 
-
     @Transactional
-    public void updateServcice(int id, String name) {
+    public void updateServcice(int id, String name, int duration, float price) {
         Servicos service = serviceRepository.findById(id).orElseThrow(() -> new IllegalStateException());
-        service.setName(name);
+        if(!name.equals(null) || !name.equals("")){
+            service.setName(name);
+        }
+        if (duration >=0) {
+            service.setDuration(duration);
+        }
+        if (price >=0) {
+            service.setPrice(price);
+        }
     }
 
 }

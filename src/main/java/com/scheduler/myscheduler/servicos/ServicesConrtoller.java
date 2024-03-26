@@ -43,8 +43,8 @@ public class ServicesConrtoller {
     }
 
     @PutMapping(path = "{id}")
-    public void updateServcice(@PathVariable("id") int id,@RequestParam String name){
-        servicesService.updateServcice(id,name);
+    public void updateServcice(@PathVariable("id") int id,@RequestParam String name, @RequestParam int duration, @RequestParam float price){
+        servicesService.updateServcice(id,name,duration,price);
 
     }
 
