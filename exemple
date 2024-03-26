@@ -14,3 +14,14 @@ exemplo de Post Appointment
 
 
 }
+
+
+service exemplo
+{
+    "name": "Corte",
+    "duration": 60,
+    "price": 10,
+    "user": {
+        "id": 1
+    }
+}
