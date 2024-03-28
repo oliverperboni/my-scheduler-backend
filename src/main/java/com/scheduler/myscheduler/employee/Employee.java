@@ -25,6 +25,25 @@ public class Employee {
     private int[] workDays;
     @OneToMany(mappedBy = "employee")
     private List<Appointment> appointments;
+    private String startTime;
+    private String endTime;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
 
     public Employee() {
 
@@ -36,11 +55,7 @@ public class Employee {
                 + "]";
     }
 
-    public Employee(String name, String phone, int[] workDays) {
-        this.name = name;
-        this.phone = phone;
-        this.workDays = workDays;
-    }
+   
 
     // public Employee(int id, String name, String phone, int[] workDays) {
     //     this.id = id;
@@ -48,6 +63,14 @@ public class Employee {
     //     this.phone = phone;
     //     this.workDays = workDays;
     // }
+
+    public Employee(String name, String phone, int[] workDays, String startTime, String endTime) {
+        this.name = name;
+        this.phone = phone;
+        this.workDays = workDays;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
     public int getId() {
         return id;

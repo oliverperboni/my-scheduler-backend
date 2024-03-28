@@ -31,6 +31,10 @@ public class EmployeeController {
 	public List<Employee> getStudent(){
 		return employeeService.getStudent();
 	}
+    @GetMapping(path = "{id}")
+	public Employee getEmployee(@PathVariable("id") int id){
+		return employeeService.getEmployee(id);
+	}
 
     @PostMapping
     public void registerNewEmployee(@RequestBody Employee employee){
